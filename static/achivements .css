@@ -8,6 +8,12 @@
   --ach-accent-glow: rgba(179, 18, 28, 0.35);
 }
 
+/* Добавляем защиту от горизонтальной прокрутки (если ещё нет) */
+body {
+  overflow-x: hidden;
+  margin: 0;
+}
+
 .achievements-page {
   position: relative;
   z-index: 2;
@@ -18,7 +24,6 @@
   padding: 48px 24px;
 }
 
-/* ===== КАРТОЧКА УМЕНЬШЕНА ===== */
 .achievements-card {
   background: var(--ach-card-bg);
   border: 1.5px solid var(--ach-ink);
@@ -26,14 +31,15 @@
   box-shadow:
     5px 5px 0 rgba(24, 20, 16, 0.9),
     0 0 0 1px rgba(24, 20, 16, 0.08);
-  max-width: 720px;          /* уменьшено с 1000px */
-  width: 100%;
-  padding: 40px 48px;        /* уменьшено с 60px 70px */
+  max-width: 720px;           /* максимальная ширина, но будет сужаться */
+  width: 100%;                /* занимает всю доступную ширину */
+  padding: clamp(30px, 5vw, 48px); /* адаптивные внутренние отступы */
+  box-sizing: border-box;     /* чтобы паддинги не увеличивали ширину */
 }
 
 .achievements-card h1 {
   font-family: "Permanent Marker", cursive;
-  font-size: 42px;
+  font-size: clamp(28px, 4vw, 42px); /* адаптивный размер */
   font-weight: 400;
   letter-spacing: 0.5px;
   color: var(--ach-ink);
@@ -59,8 +65,8 @@
 
 .achievements-card li {
   color: var(--ach-text);
-  font-size: 22px;
-  font-weight: 500;          /* было 700 – теперь менее жирный */
+  font-size: clamp(16px, 2vw, 22px);  /* адаптивный размер шрифта */
+  font-weight: 500;
   line-height: 2.0;
   padding: 16px 0;
   border-bottom: 1.5px solid #c9c0ad;
@@ -70,16 +76,20 @@
   border-bottom: none;
 }
 
-/* ---- Адаптивность для телефонов ---- */
+/* Дополнительная адаптация для маленьких экранов (телефоны) */
 @media (max-width: 600px) {
+  .achievements-page {
+    padding: 24px 12px;
+  }
   .achievements-card {
-    padding: 24px 20px;      /* уменьшено для мобильных */
+    padding: 20px 16px;
   }
   .achievements-card h1 {
-    font-size: 32px;
+    font-size: 26px;
   }
   .achievements-card li {
-    font-size: 18px;
+    font-size: 15px;
     padding: 12px 0;
+    line-height: 1.7;
   }
 }
