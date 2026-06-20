@@ -49,11 +49,6 @@ func teamHistory(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "./static/teamhistory.html")
 }
 
-// validateSubmission mirrors the client-side rules so nothing gets through
-// just because someone bypassed or disabled the JS in the browser.
-// Note: password is intentionally NOT stored or required here — collecting
-// a password through a contact-style form is a separate security concern;
-// drop that field from the form if this isn't an auth flow.
 func validateSubmission(s Submission) []apiError {
 	var errs []apiError
 
@@ -90,9 +85,6 @@ func saveSubmission(s Submission) error {
 	return err
 }
 
-// notifyByEmail sends a plain-text alert about the new submission.
-// It's a no-op (logs and returns) if SMTP env vars aren't set, so the
-// site keeps working even before you configure email.
 func notifyByEmail(s Submission) error {
 	host := os.Getenv("SMTP_HOST")
 	port := os.Getenv("SMTP_PORT")
@@ -149,8 +141,6 @@ func submitHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Email is sent in the background so a slow SMTP server doesn't
-	// make the user wait for their "submitted!" confirmation.
 	go func() {
 		if err := notifyByEmail(s); err != nil {
 			fmt.Println("Ошибка отправки письма:", err)
@@ -171,8 +161,15 @@ func main() {
 	http.HandleFunc("/team-history", teamHistory)
 	http.HandleFunc("/submit", submitHandler)
 
-	fmt.Println("Сервер запущен на :8080")
-	err := http.ListenAndServe(":8080", nil)
+	// ========== ЕДИНСТВЕННОЕ ИЗМЕНЕНИЕ ==========
+	// Читаем порт, который назначил Render (или оставляем 8080 локально)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	fmt.Printf("Сервер запущен на :%s\n", port)
+	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
 		fmt.Println("Ошибка запуска:", err)
 	}
