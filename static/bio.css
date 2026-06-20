@@ -31,38 +31,38 @@ body {
   box-shadow:
     5px 5px 0 rgba(24, 20, 16, 0.9),
     0 0 0 1px rgba(24, 20, 16, 0.08) !important;
-  max-width: 880px !important;          /* максимум, но будет сужаться */
-  width: 100% !important;               /* занимает всю доступную ширину */
-  padding: clamp(20px, 4vw, 48px) !important; /* адаптивные отступы */
-  box-sizing: border-box !important;    /* чтобы паддинги не увеличивали ширину */
+  max-width: 880px !important;
+  width: 100% !important;
+  padding: clamp(16px, 3vw, 36px) !important; /* УМЕНЬШЕНО */
+  box-sizing: border-box !important;
 }
 
 .bio-card h1 {
   font-family: "Permanent Marker", cursive !important;
-  font-size: clamp(24px, 4vw, 36px) !important; /* адаптивный размер */
+  font-size: clamp(22px, 3vw, 30px) !important; /* УМЕНЬШЕНО */
   font-weight: 400 !important;
   letter-spacing: 0.5px !important;
   color: var(--bio-ink) !important;
-  margin: 0 0 6px 0 !important;
+  margin: 0 0 4px 0 !important;
 }
 
 .bio-card h1::after {
   content: "" !important;
   display: block !important;
-  width: 72px !important;
+  width: 60px !important; /* УМЕНЬШЕНО */
   height: 3px !important;
-  margin-top: 12px !important;
-  margin-bottom: 22px !important;
+  margin-top: 10px !important; /* УМЕНЬШЕНО */
+  margin-bottom: 18px !important; /* УМЕНЬШЕНО */
   background: var(--bio-accent) !important;
   box-shadow: 0 0 6px var(--bio-accent-glow) !important;
 }
 
 .bio-card p {
   color: var(--bio-text) !important;
-  font-size: clamp(14px, 1.8vw, 19px) !important; /* адаптивный размер */
-  font-weight: 600 !important;
-  line-height: 1.8 !important;
-  margin: 0 0 16px 0 !important;
+  font-size: clamp(13px, 1.5vw, 17px) !important; /* УМЕНЬШЕНО */
+  font-weight: 500 !important; /* УМЕНЬШЕНО с 600 до 500 */
+  line-height: 1.7 !important; /* УМЕНЬШЕНО */
+  margin: 0 0 12px 0 !important; /* УМЕНЬШЕНО */
 }
 
 .bio-card p:last-child {
@@ -72,16 +72,16 @@ body {
 /* Дополнительная адаптация для телефонов */
 @media (max-width: 600px) {
   .bio-page {
-    padding: 24px 12px !important;
+    padding: 20px 10px !important;
   }
   .bio-card {
-    padding: 16px !important;
+    padding: 14px !important;
   }
   .bio-card h1 {
-    font-size: 22px !important;
+    font-size: 20px !important;
   }
   .bio-card p {
-    font-size: 14px !important;
-    line-height: 1.6 !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
   }
 }
