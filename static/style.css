@@ -15,6 +15,7 @@
 
 body {
   margin: 0;
+  overflow-x: hidden;                 /* ← changed: предотвращает горизонтальную прокрутку */
   background: var(--bg);
   color: var(--text);
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -26,7 +27,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 22px 36px;
+  padding: 22px 4vw;                  /* ← changed: вместо 36px используем относительную единицу */
   border-bottom: 1px solid var(--border);
   background: #0a0a0a;
 }
@@ -80,8 +81,8 @@ body {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr 1fr;
   gap: 4px;
-  height: 88vh;
-  max-height: 760px;
+  min-height: 500px;                  /* ← changed: убрали фиксированную height и max-height */
+  /* height и max-height удалены */
 }
 
 .hero-grid > div {
@@ -108,14 +109,14 @@ body {
   position: absolute;
   left: 0;
   bottom: 0;
-  padding: 28px 32px;
+  padding: 2vw 3vw;                   /* ← changed: вместо 28px 32px */
   background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 70%);
   width: 100%;
 }
 
 .feature-overlay .eyebrow {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 26px;
+  font-size: clamp(18px, 3vw, 32px);  /* ← changed: адаптивный размер */
   letter-spacing: 0.05em;
   margin: 0 0 6px 0;
 }
@@ -127,7 +128,7 @@ body {
 .feature-overlay p {
   margin: 0 0 14px 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: clamp(12px, 1.5vw, 16px); /* ← changed: адаптивный размер */
   max-width: 320px;
 }
 
@@ -147,7 +148,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 18px 36px;
+  padding: 18px 4vw;                  /* ← changed: вместо 36px */
   background: #050505;
   border-top: 1px solid var(--border);
   font-size: 13px;
@@ -177,6 +178,7 @@ body {
   background: #d6481f;
 }
 
+/* Существующий медиазапрос для планшетов и телефонов (до 900px) */
 @media (max-width: 900px) {
   .nav-links { display: none; }
   .hero-grid {
@@ -187,8 +189,23 @@ body {
   .cookie-banner { flex-direction: column; align-items: flex-start; }
 }
 
+/* Новые медиазапросы для промежуточных ширин (добавлены) */
+@media (max-width: 1100px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 250px;
+    min-height: auto;  /* убираем фиксированную высоту для этих размеров */
+  }
+}
+@media (max-width: 700px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 200px;
+  }
+}
+
 .cta-row {
-  padding: 56px 36px;
+  padding: 4vw 4vw;                  /* ← changed: вместо 56px 36px */
   display: flex;
   justify-content: center;
   gap: 18px;
