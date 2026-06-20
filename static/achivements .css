@@ -18,7 +18,7 @@
   padding: 48px 24px;
 }
 
-/* ===== КАРТОЧКА СТАЛА ЕЩЁ БОЛЬШЕ ===== */
+/* ===== КАРТОЧКА УМЕНЬШЕНА ===== */
 .achievements-card {
   background: var(--ach-card-bg);
   border: 1.5px solid var(--ach-ink);
@@ -26,14 +26,14 @@
   box-shadow:
     5px 5px 0 rgba(24, 20, 16, 0.9),
     0 0 0 1px rgba(24, 20, 16, 0.08);
-  max-width: 1000px;          /* было 880px – ещё шире */
+  max-width: 720px;          /* уменьшено с 1000px */
   width: 100%;
-  padding: 60px 70px;         /* было 50px 60px – больше воздуха */
+  padding: 40px 48px;        /* уменьшено с 60px 70px */
 }
 
 .achievements-card h1 {
   font-family: "Permanent Marker", cursive;
-  font-size: 42px;            /* было 36px – крупнее */
+  font-size: 42px;
   font-weight: 400;
   letter-spacing: 0.5px;
   color: var(--ach-ink);
@@ -43,8 +43,8 @@
 .achievements-card h1::after {
   content: "";
   display: block;
-  width: 80px;               /* чуть длиннее подчёркивание */
-  height: 4px;               /* чуть толще */
+  width: 80px;
+  height: 4px;
   margin-top: 14px;
   margin-bottom: 26px;
   background: var(--ach-accent);
@@ -59,10 +59,10 @@
 
 .achievements-card li {
   color: var(--ach-text);
-  font-size: 22px;            /* было 19px – ещё крупнее */
-  font-weight: 700;           /* было 600 – теперь жирный */
-  line-height: 2.0;           /* было 1.9 – чуть просторнее */
-  padding: 16px 0;            /* больше отступов между пунктами */
+  font-size: 22px;
+  font-weight: 500;          /* было 700 – теперь менее жирный */
+  line-height: 2.0;
+  padding: 16px 0;
   border-bottom: 1.5px solid #c9c0ad;
 }
 
@@ -73,7 +73,7 @@
 /* ---- Адаптивность для телефонов ---- */
 @media (max-width: 600px) {
   .achievements-card {
-    padding: 30px 24px;       /* на маленьких экранах уменьшаем отступы */
+    padding: 24px 20px;      /* уменьшено для мобильных */
   }
   .achievements-card h1 {
     font-size: 32px;
