@@ -1,0 +1,93 @@
+/* ============================================================
+   Shared "mosaic" scrolling background.
+   Used by bio.html, achievements.html, team-history.html.
+
+   Structure expected in HTML:
+   <div class="bg-mosaic">
+     <div class="bg-col">
+       <div class="bg-col-track">
+         <img src="..."> <img src="..."> <img src="...">
+         <!-- same images repeated once more, in the same order -->
+         <img src="..."> <img src="..."> <img src="...">
+       </div>
+     </div>
+     ... repeat .bg-col for each column ...
+   </div>
+   <div class="bg-overlay"></div>
+
+   To swap images: edit the <img src> values in the HTML only.
+   Each column's image list must be duplicated (pasted twice in a
+   row, identical) so the upward loop has no visible seam.
+   ============================================================ */
+
+.bg-mosaic {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  background: #0a0807;
+  overflow: hidden;
+}
+
+.bg-col {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.bg-col-track {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  animation-name: scrollUpMosaic;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.bg-col-track img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border-radius: 2px;
+  filter: grayscale(30%) contrast(1.05) brightness(0.6);
+}
+
+/* Slightly different speeds per column so they don't move in
+   lockstep — keeps the "bunch of small ones drifting" feel. */
+.bg-col:nth-child(1) .bg-col-track { animation-duration: 32s; }
+.bg-col:nth-child(2) .bg-col-track { animation-duration: 40s; }
+.bg-col:nth-child(3) .bg-col-track { animation-duration: 27s; }
+.bg-col:nth-child(4) .bg-col-track { animation-duration: 36s; }
+.bg-col:nth-child(5) .bg-col-track { animation-duration: 44s; }
+.bg-col:nth-child(6) .bg-col-track { animation-duration: 30s; }
+
+@keyframes scrollUpMosaic {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-col-track {
+    animation: none;
+  }
+}
+
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(10,8,6,0.78) 0%, rgba(10,8,6,0.6) 40%, rgba(10,8,6,0.88) 100%);
+}
+
+@media (max-width: 700px) {
+  .bg-mosaic {
+    gap: 4px;
+    padding: 4px;
+  }
+  /* Fewer columns visible is fine on small screens — extra columns
+     just get squeezed; no markup change needed. */
+}

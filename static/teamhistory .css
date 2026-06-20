@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --th-card-bg: #f5f1e8;
+  --th-ink: #181410;
+  --th-text: #211c16;
+  --th-accent: #b3121c;
+  --th-accent-glow: rgba(179, 18, 28, 0.35);
+}
+
+.team-history-page {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 73px);
+  padding: 48px 24px;
+}
+
+/* ===== УВЕЛИЧЕННАЯ КАРТОЧКА ===== */
+.team-history-card {
+  background: var(--th-card-bg);
+  border: 1.5px solid var(--th-ink);
+  border-radius: 4px;
+  box-shadow:
+    5px 5px 0 rgba(24, 20, 16, 0.9),
+    0 0 0 1px rgba(24, 20, 16, 0.08);
+  max-width: 1000px;          /* было 720px – стало шире */
+  width: 100%;
+  padding: 60px 70px;         /* было 40px 44px – больше воздуха */
+}
+
+.team-history-card h1 {
+  font-family: "Permanent Marker", cursive;
+  font-size: 42px;            /* было 32px – крупнее */
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: var(--th-ink);
+  margin: 0 0 6px 0;
+}
+
+.team-history-card h1::after {
+  content: "";
+  display: block;
+  width: 80px;               /* было 72px – чуть длиннее */
+  height: 4px;               /* было 3px – чуть толще */
+  margin-top: 14px;
+  margin-bottom: 26px;
+  background: var(--th-accent);
+  box-shadow: 0 0 8px var(--th-accent-glow);
+}
+
+.team-history-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-history-card li {
+  color: var(--th-text);
+  font-size: 22px;            /* было 15px – сильно увеличен */
+  font-weight: 700;           /* добавлена жирность (было без указания) */
+  line-height: 2.0;           /* было 1.7 – просторнее */
+  padding: 16px 0;            /* было 12px – больше промежутков */
+  border-bottom: 1.5px solid #c9c0ad; /* было 1px – чуть толще */
+}
+
+.team-history-card li:last-child {
+  border-bottom: none;
+}
+
+/* ---- Адаптивность для телефонов ---- */
+@media (max-width: 600px) {
+  .team-history-card {
+    padding: 30px 24px;
+  }
+  .team-history-card h1 {
+    font-size: 32px;
+  }
+  .team-history-card li {
+    font-size: 18px;
+    padding: 12px 0;
+  }
+}

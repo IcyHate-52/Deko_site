@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --ach-card-bg: #f5f1e8;
+  --ach-ink: #181410;
+  --ach-text: #211c16;
+  --ach-accent: #b3121c;
+  --ach-accent-glow: rgba(179, 18, 28, 0.35);
+}
+
+.achievements-page {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 73px);
+  padding: 48px 24px;
+}
+
+/* ===== КАРТОЧКА СТАЛА ЕЩЁ БОЛЬШЕ ===== */
+.achievements-card {
+  background: var(--ach-card-bg);
+  border: 1.5px solid var(--ach-ink);
+  border-radius: 4px;
+  box-shadow:
+    5px 5px 0 rgba(24, 20, 16, 0.9),
+    0 0 0 1px rgba(24, 20, 16, 0.08);
+  max-width: 1000px;          /* было 880px – ещё шире */
+  width: 100%;
+  padding: 60px 70px;         /* было 50px 60px – больше воздуха */
+}
+
+.achievements-card h1 {
+  font-family: "Permanent Marker", cursive;
+  font-size: 42px;            /* было 36px – крупнее */
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: var(--ach-ink);
+  margin: 0 0 6px 0;
+}
+
+.achievements-card h1::after {
+  content: "";
+  display: block;
+  width: 80px;               /* чуть длиннее подчёркивание */
+  height: 4px;               /* чуть толще */
+  margin-top: 14px;
+  margin-bottom: 26px;
+  background: var(--ach-accent);
+  box-shadow: 0 0 8px var(--ach-accent-glow);
+}
+
+.achievements-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.achievements-card li {
+  color: var(--ach-text);
+  font-size: 22px;            /* было 19px – ещё крупнее */
+  font-weight: 700;           /* было 600 – теперь жирный */
+  line-height: 2.0;           /* было 1.9 – чуть просторнее */
+  padding: 16px 0;            /* больше отступов между пунктами */
+  border-bottom: 1.5px solid #c9c0ad;
+}
+
+.achievements-card li:last-child {
+  border-bottom: none;
+}
+
+/* ---- Адаптивность для телефонов ---- */
+@media (max-width: 600px) {
+  .achievements-card {
+    padding: 30px 24px;       /* на маленьких экранах уменьшаем отступы */
+  }
+  .achievements-card h1 {
+    font-size: 32px;
+  }
+  .achievements-card li {
+    font-size: 18px;
+    padding: 12px 0;
+  }
+}

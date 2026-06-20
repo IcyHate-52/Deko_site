@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #e7e2d8;
+  --card-bg: #f5f1e8;
+  --ink: #181410;
+  --text: #211c16;
+  --label: #2b2520;
+  --placeholder: #8c8475;
+  --border: #c9c0ad;
+  --accent: #b3121c;
+  --accent-deep: #6e0c12;
+  --accent-glow: rgba(179, 18, 28, 0.35);
+  --error: #b3121c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 3px);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text);
+  padding: 24px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  box-shadow:
+    5px 5px 0 rgba(24, 20, 16, 0.9),
+    0 0 0 1px rgba(24, 20, 16, 0.08);
+  display: flex;
+  overflow: hidden;
+  max-width: 880px;
+  width: 100%;
+}
+
+.visual {
+  flex: 0 0 38%;
+  padding: 16px;
+  position: relative;
+}
+
+.visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+  filter: grayscale(15%) contrast(1.05);
+  border: 1px solid var(--ink);
+}
+
+.form-panel {
+  flex: 1;
+  padding: 32px 40px 32px 28px;
+  position: relative;
+}
+
+h1 {
+  font-family: "Permanent Marker", cursive;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin: 0 0 6px 0;
+  color: var(--ink);
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin-top: 10px;
+  margin-bottom: 18px;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+
+.field {
+  margin-bottom: 18px;
+  position: relative;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--label);
+  margin-bottom: 6px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  background: #fffdf8;
+  transition: border-color 0.2s ease, box-shadow 0.25s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--placeholder);
+  font-style: italic;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 3px var(--accent-glow),
+    0 0 18px 2px var(--accent-glow);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.field.error input,
+.field.error textarea {
+  border-color: var(--error);
+}
+
+.error-message {
+  display: none;
+  color: var(--error);
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.field.error .error-message {
+  display: block;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  background: var(--ink);
+  color: #f5f1e8;
+  border: 1.5px solid var(--ink);
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+@media (max-width: 640px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .visual {
+    flex: none;
+    height: 180px;
+  }
+
+  .form-panel {
+    padding: 24px;
+  }
+}
