@@ -8,10 +8,10 @@
   --ach-accent-glow: rgba(179, 18, 28, 0.35);
 }
 
-/* Добавляем защиту от горизонтальной прокрутки (если ещё нет) */
+/* Защита от горизонтальной прокрутки */
 body {
-  overflow-x: hidden;
-  margin: 0;
+  overflow-x: hidden !important;
+  margin: 0 !important;
 }
 
 .achievements-page {
@@ -25,71 +25,71 @@ body {
 }
 
 .achievements-card {
-  background: var(--ach-card-bg);
-  border: 1.5px solid var(--ach-ink);
-  border-radius: 4px;
+  background: var(--ach-card-bg) !important;
+  border: 1.5px solid var(--ach-ink) !important;
+  border-radius: 4px !important;
   box-shadow:
     5px 5px 0 rgba(24, 20, 16, 0.9),
-    0 0 0 1px rgba(24, 20, 16, 0.08);
-  max-width: 720px;           /* максимальная ширина, но будет сужаться */
-  width: 100%;                /* занимает всю доступную ширину */
-  padding: clamp(30px, 5vw, 48px); /* адаптивные внутренние отступы */
-  box-sizing: border-box;     /* чтобы паддинги не увеличивали ширину */
+    0 0 0 1px rgba(24, 20, 16, 0.08) !important;
+  max-width: 720px !important;          /* максимум, но будет сужаться */
+  width: 100% !important;               /* занимает всю доступную ширину */
+  padding: clamp(20px, 4vw, 48px) !important; /* адаптивные отступы */
+  box-sizing: border-box !important;    /* чтобы паддинги не увеличивали ширину */
 }
 
 .achievements-card h1 {
-  font-family: "Permanent Marker", cursive;
-  font-size: clamp(28px, 4vw, 42px); /* адаптивный размер */
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  color: var(--ach-ink);
-  margin: 0 0 6px 0;
+  font-family: "Permanent Marker", cursive !important;
+  font-size: clamp(24px, 4vw, 36px) !important; /* адаптивный размер */
+  font-weight: 400 !important;
+  letter-spacing: 0.5px !important;
+  color: var(--ach-ink) !important;
+  margin: 0 0 6px 0 !important;
 }
 
 .achievements-card h1::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 4px;
-  margin-top: 14px;
-  margin-bottom: 26px;
-  background: var(--ach-accent);
-  box-shadow: 0 0 8px var(--ach-accent-glow);
+  content: "" !important;
+  display: block !important;
+  width: 80px !important;
+  height: 4px !important;
+  margin-top: 14px !important;
+  margin-bottom: 26px !important;
+  background: var(--ach-accent) !important;
+  box-shadow: 0 0 8px var(--ach-accent-glow) !important;
 }
 
 .achievements-card ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
 }
 
 .achievements-card li {
-  color: var(--ach-text);
-  font-size: clamp(16px, 2vw, 22px);  /* адаптивный размер шрифта */
-  font-weight: 500;
-  line-height: 2.0;
-  padding: 16px 0;
-  border-bottom: 1.5px solid #c9c0ad;
+  color: var(--ach-text) !important;
+  font-size: clamp(14px, 1.8vw, 19px) !important; /* адаптивный размер шрифта */
+  font-weight: 500 !important;
+  line-height: 1.8 !important;
+  padding: 14px 0 !important;
+  border-bottom: 1.5px solid #c9c0ad !important;
 }
 
 .achievements-card li:last-child {
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
-/* Дополнительная адаптация для маленьких экранов (телефоны) */
+/* Дополнительная адаптация для телефонов */
 @media (max-width: 600px) {
   .achievements-page {
-    padding: 24px 12px;
+    padding: 24px 12px !important;
   }
   .achievements-card {
-    padding: 20px 16px;
+    padding: 16px !important;
   }
   .achievements-card h1 {
-    font-size: 26px;
+    font-size: 22px !important;
   }
   .achievements-card li {
-    font-size: 15px;
-    padding: 12px 0;
-    line-height: 1.7;
+    font-size: 14px !important;
+    padding: 10px 0 !important;
+    line-height: 1.6 !important;
   }
 }
