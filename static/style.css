@@ -291,3 +291,53 @@ body {
   color: var(--text);
   border-color: var(--muted);
 }
+/* ===== ПЕРЕОПРЕДЕЛЕНИЕ ВСЕХ КАРТОЧЕК (АДАПТИВ) ===== */
+
+/* Биография */
+.bio-card,
+.achievements-card,
+.team-history-card {
+  max-width: 880px !important;
+  width: 100% !important;
+  padding: clamp(20px, 4vw, 48px) !important;
+  box-sizing: border-box !important;
+}
+
+.bio-card h1,
+.achievements-card h1,
+.team-history-card h1 {
+  font-size: clamp(24px, 4vw, 36px) !important;
+}
+
+.bio-card p,
+.achievements-card li,
+.team-history-card li {
+  font-size: clamp(14px, 1.8vw, 19px) !important;
+  line-height: 1.8 !important;
+}
+
+/* Достижения и история — отдельно, если нужно больше ширины */
+.achievements-card,
+.team-history-card {
+  max-width: 720px !important; /* или 1000px — подставьте своё */
+}
+
+/* Для телефонов — дополнительное сжатие */
+@media (max-width: 600px) {
+  .bio-card,
+  .achievements-card,
+  .team-history-card {
+    padding: 16px !important;
+  }
+  .bio-card h1,
+  .achievements-card h1,
+  .team-history-card h1 {
+    font-size: 22px !important;
+  }
+  .bio-card p,
+  .achievements-card li,
+  .team-history-card li {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+}
