@@ -8,6 +8,12 @@
   --bio-accent-glow: rgba(179, 18, 28, 0.35);
 }
 
+/* Добавляем защиту от горизонтальной прокрутки на случай, если body не переопределён */
+body {
+  overflow-x: hidden;
+  margin: 0;
+}
+
 .bio-page {
   position: relative;
   z-index: 2;
@@ -25,14 +31,15 @@
   box-shadow:
     5px 5px 0 rgba(24, 20, 16, 0.9),
     0 0 0 1px rgba(24, 20, 16, 0.08);
-  max-width: 720px;
-  width: 100%;
-  padding: 40px 44px;
+  max-width: 880px;          /* максимум, но будет сужаться */
+  width: 100%;               /* занимает всю доступную ширину */
+  padding: clamp(30px, 5vw, 60px);  /* адаптивные отступы */
+  box-sizing: border-box;    /* чтобы паддинги не увеличивали ширину */
 }
 
 .bio-card h1 {
   font-family: "Permanent Marker", cursive;
-  font-size: 32px;
+  font-size: clamp(28px, 4vw, 42px); /* минимум 28px, максимум 42px */
   font-weight: 400;
   letter-spacing: 0.5px;
   color: var(--bio-ink);
@@ -52,8 +59,9 @@
 
 .bio-card p {
   color: var(--bio-text);
-  font-size: 15px;
-  line-height: 1.8;
+  font-size: clamp(15px, 2vw, 20px); /* адаптивный размер шрифта */
+  font-weight: 600;
+  line-height: 1.9;
   margin: 0 0 16px 0;
 }
 
@@ -61,47 +69,19 @@
   margin-bottom: 0;
 }
 
-/* ===== УВЕЛИЧЕННАЯ КАРТОЧКА И ТЕКСТ ===== */
-.bio-card {
-  background: var(--bio-card-bg);
-  border: 1.5px solid var(--bio-ink);
-  border-radius: 4px;
-  box-shadow:
-    5px 5px 0 rgba(24, 20, 16, 0.9),
-    0 0 0 1px rgba(24, 20, 16, 0.08);
-  max-width: 880px;         /* было 720px – увеличили */
-  width: 100%;
-  padding: 50px 60px;       /* было 40px 44px – увеличили */
-}
-
-.bio-card h1 {
-  font-family: "Permanent Marker", cursive;
-  font-size: 36px;          /* было 32px – увеличили */
-  font-weight: 400;
-  letter-spacing: 0.5px;
-  color: var(--bio-ink);
-  margin: 0 0 6px 0;
-}
-
-.bio-card h1::after {
-  content: "";
-  display: block;
-  width: 72px;
-  height: 3px;
-  margin-top: 12px;
-  margin-bottom: 22px;
-  background: var(--bio-accent);
-  box-shadow: 0 0 6px var(--bio-accent-glow);
-}
-
-.bio-card p {
-  color: var(--bio-text);
-  font-size: 19px;          /* было 15px – увеличили */
-  font-weight: 600;         /* добавили полужирное начертание */
-  line-height: 1.9;         /* было 1.8 – чуть увеличили */
-  margin: 0 0 16px 0;
-}
-
-.bio-card p:last-child {
-  margin-bottom: 0;
+/* Дополнительно: на очень маленьких экранах (телефоны) уменьшаем отступы и шрифт */
+@media (max-width: 600px) {
+  .bio-page {
+    padding: 24px 12px;
+  }
+  .bio-card {
+    padding: 20px 16px;
+  }
+  .bio-card h1 {
+    font-size: 24px;
+  }
+  .bio-card p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
 }
